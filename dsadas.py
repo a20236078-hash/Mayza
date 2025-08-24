@@ -1,45 +1,19 @@
 import streamlit as st
-import tkinter as tk
 
-def responder_si():
-    label.config(text="¡Gracias! Tú también me caes genial 😎")
+st.set_page_config(page_title="Pregunta para ti 🤔", page_icon="❓", layout="centered")
 
-def responder_no():
-    label.config(text="En 2026 hablamos, bye 👋")
+# Título
+st.markdown("<h2 style='text-align: center; color: black;'>¿Te caigo bien?</h2>", unsafe_allow_html=True)
 
-# Crear la ventana principal
-root = tk.Tk()
-root.title("Pregunta para ti 🤔")
-root.geometry("400x200")        # Tamaño de la ventana
-root.configure(bg="#add8e6")    # Fondo celeste (amistoso)
+# Botones de respuesta
+col1, col2 = st.columns(2)
 
-# Texto principal
-label = tk.Label(root, 
-                 text="¿Te caigo bien?", 
-                 font=("Arial", 16, "bold"), 
-                 bg="#add8e6", 
-                 fg="black")
-label.pack(pady=30)
+with col1:
+    if st.button("Sí 👍"):
+        st.success("¡Gracias! Tú también me caes genial 😎")
 
-# Botón "Sí"
-boton_si = tk.Button(root, 
-                     text="Sí 👍", 
-                     command=responder_si, 
-                     bg="green", 
-                     fg="white", 
-                     font=("Arial", 12, "bold"),
-                     width=12)
-boton_si.pack(side="left", padx=40)
+with col2:
+    if st.button("No 👎"):
+        st.warning("En 2026 hablamos, bye 👋")
 
-# Botón "No"
-boton_no = tk.Button(root, 
-                     text="No 👎", 
-                     command=responder_no, 
-                     bg="gray", 
-                     fg="white", 
-                     font=("Arial", 12, "bold"),
-                     width=12)
-boton_no.pack(side="right", padx=40)
 
-# Iniciar ventana
-root.mainloop()
